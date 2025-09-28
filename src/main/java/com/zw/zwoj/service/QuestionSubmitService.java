@@ -14,8 +14,7 @@ public interface QuestionSubmitService extends IService<QuestionSubmit> {
     long doQuestionSubmit(QuestionSubmitAddRequest request, User loginUser);
     
     
-    QueryWrapper<QuestionSubmit> queryWrapper(QuestionSubmitQueryRequest request);
-    
+    QueryWrapper<QuestionSubmit> getQueryWrapper(QuestionSubmitQueryRequest request);
     
     QuestionSubmitVO getQuestionSubmitVO(QuestionSubmit questionSubmit, User loginUser);
     
