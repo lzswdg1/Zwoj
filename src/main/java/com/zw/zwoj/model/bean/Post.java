@@ -20,7 +20,7 @@ public class Post implements Serializable {
 
     private String tags;
     
-    private Integer thumNum;
+    private Integer thumbNum;
     
     
     private Integer favourNum;
