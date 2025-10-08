@@ -1,6 +1,6 @@
 package com.zw.zwoj.judge;
 
-import com.yupi.yuoj.model.entity.QuestionSubmit;
+import com.zw.zwoj.model.bean.QuestionSubmit;
 
 /**
  * 判题服务

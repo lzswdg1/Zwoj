@@ -10,12 +10,12 @@ import com.zw.zwoj.model.vo.QuestionVO;
 import javax.servlet.http.HttpServletRequest;
 
 public interface QuestionService extends IService<Question> {
-    void validQuestion(Question question,Boolean add);
+    void validQuestion(Question question,boolean add);
     
     
     QueryWrapper<Question> getQueryWrapper(QuestionQueryRequest request);
     
     QuestionVO getQuestionVO(Question question, HttpServletRequest request);
     
-    Page<QuestionVO> getQuestionVOPage(Page<Question> questionPage,QuestionQueryRequest request);
+    Page<QuestionVO> getQuestionVOPage(Page<Question> questionPage,HttpServletRequest request);
 }

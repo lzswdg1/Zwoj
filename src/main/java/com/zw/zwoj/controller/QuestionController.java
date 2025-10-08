@@ -159,13 +159,16 @@ public class QuestionController {
                                                                HttpServletRequest httpServletRequest) {
         long current = questionQueryRequest.getCurrent();
         long size = questionQueryRequest.getPageSize();
-        ThrowUtils.throwIf((size>20,ErrorCode.PARAMS_ERROR));
+        ThrowUtils.throwIf(size>20,ErrorCode.PARAMS_ERROR);
         Page<Question> questionPage =questionService.page(new Page<>(current,size),
                questionService.getQueryWrapper(questionQueryRequest) );
         return ResultUtils.success(questionService.getQuestionVOPage(questionPage,httpServletRequest));
     }
+    
+    
+    
     @PostMapping("/my/list/page/vo")
-    public BaseResponse<Page<QuestionVO>> listMyQuestionVOByPage(@ResponseBody QuestionQueryRequest questionQueryRequest,
+    public BaseResponse<Page<QuestionVO>> listMyQuestionVOByPage(@RequestBody QuestionQueryRequest questionQueryRequest,
                                                                  HttpServletRequest httpServletRequest) {
         if(questionQueryRequest ==null){
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -183,7 +186,7 @@ public class QuestionController {
     
     @PostMapping("/list/page")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
-    public BaseResponse<Page<Question>> listQuestionByPage(@ResponseBody QuestionQueryRequest questionQueryRequest,HttpServletRequest httpServletRequest){
+    public BaseResponse<Page<Question>> listQuestionByPage(@RequestBody QuestionQueryRequest questionQueryRequest,HttpServletRequest httpServletRequest){
         long current = questionQueryRequest.getCurrent();
         long size = questionQueryRequest.getPageSize();
         Page<Question> questionPage = questionService.page(new Page<>(current,size),
@@ -223,7 +226,7 @@ public class QuestionController {
     }
     
     @PostMapping("/question_submit/do")
-    public BaseResponse<Long> doQuestionSubmit(@ResponseBody QuestionSubmitAddRequest questionSubmitAddRequest,
+    public BaseResponse<Long> doQuestionSubmit(@RequestBody QuestionSubmitAddRequest questionSubmitAddRequest,
                                                HttpServletRequest httpServletRequest){
         if(questionSubmitAddRequest == null || questionSubmitAddRequest.getQuestionId()<=0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -234,7 +237,7 @@ public class QuestionController {
     }
     
     @PostMapping("/question_submit/list/page")
-    public BaseResponse<Page<QuestionSubmitVO>> listQuestionSubmitByPage(@ResponseBody QuestionSubmitQueryRequest questionSubmitQueryRequest,
+    public BaseResponse<Page<QuestionSubmitVO>> listQuestionSubmitByPage(@RequestBody QuestionSubmitQueryRequest questionSubmitQueryRequest,
                                                                          HttpServletRequest httpServletRequest){
         long current = questionSubmitQueryRequest.getCurrent();
         long size = questionSubmitQueryRequest.getPageSize();

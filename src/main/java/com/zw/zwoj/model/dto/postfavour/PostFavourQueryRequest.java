@@ -1,15 +1,14 @@
 package com.zw.zwoj.model.dto.postfavour;
 
-import co.elastic.clients.elasticsearch.license.PostRequest;
+import com.zw.zwoj.common.PageRequest;
 import com.zw.zwoj.model.dto.post.PostQueryRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 import java.io.Serializable;
 
 @Data
 @EqualsAndHashCode(callSuper= true)
-public class PostFavourQueryRequest extends PostRequest implements Serializable {
+public class PostFavourQueryRequest extends PageRequest implements Serializable {
     /**
      * 帖子查询请求
      */

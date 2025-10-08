@@ -2,7 +2,7 @@ package com.zw.zwoj.model.vo;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.yupi.yuoj.model.entity.Post;
+import com.zw.zwoj.model.bean.Post;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * 帖子视图
  *
- * @author <a href="https://github.com/liyupi">程序员鱼皮</a>
- * @from <a href="https://yupi.icu">编程导航知识星球</a>
+ * @author <a href="https://github.com/lizw">程序员鱼皮</a>
+ * @from <a href="https://zw.icu">编程导航知识星球</a>
  */
 @Data
 public class PostVO implements Serializable {

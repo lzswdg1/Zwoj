@@ -29,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import com.google.gson.Gson;
 
-import static com.zw.zwoj.model.vo.PostVO.GSON;
 
 @RestController
 @RequestMapping("/post")
@@ -60,7 +60,7 @@ public class PostController {
          User loginUser = userService.getLoginUser(request);
          post.setUserId(loginUser.getId());
          post.setFavourNum(0);
-         post.setThumNum(0);
+         post.setThumbNum(0);
          boolean result = postService.save(post);
          ThrowUtils.throwIf(!result,ErrorCode.OPERATION_ERROR);
          long newPostId = post.getId();

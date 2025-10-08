@@ -1,8 +1,8 @@
 package com.zw.zwoj.judge.codesandbox;
 
-import com.yupi.yuoj.judge.codesandbox.impl.ExampleCodeSandbox;
-import com.yupi.yuoj.judge.codesandbox.impl.RemoteCodeSandbox;
-import com.yupi.yuoj.judge.codesandbox.impl.ThirdPartyCodeSandbox;
+import com.zw.zwoj.judge.codesandbox.impl.ExampleCodeSandbox;
+import com.zw.zwoj.judge.codesandbox.impl.RemoteCodeSandbox;
+import com.zw.zwoj.judge.codesandbox.impl.ThirdPartyCodeSandbox;
 
 /**
  * 代码沙箱工厂（根据字符串参数创建指定的代码沙箱实例）

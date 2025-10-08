@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.gson.Gson;
 import com.zw.zwoj.common.ErrorCode;
-import com.zw.zwoj.common.PageRequest;
 import com.zw.zwoj.constant.CommonConstant;
 import com.zw.zwoj.exception.BusinessException;
 import com.zw.zwoj.exception.ThrowUtils;
@@ -16,23 +15,24 @@ import com.zw.zwoj.mapper.PostThumbMapper;
 import com.zw.zwoj.model.bean.*;
 import com.zw.zwoj.model.dto.post.PostEsDTO;
 import com.zw.zwoj.model.dto.post.PostQueryRequest;
+import org.springframework.data.domain.PageRequest;
 import com.zw.zwoj.model.vo.PostVO;
 import com.zw.zwoj.model.vo.UserVO;
 import com.zw.zwoj.service.PostService;
 import com.zw.zwoj.service.UserService;
+import com.zw.zwoj.utils.SqlUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.sort.SortBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
@@ -41,8 +41,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import static kotlin.collections.builders.SerializedCollection.tagList;
 
 @Slf4j
 @Service
@@ -61,8 +59,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
     
     @Resource
     private ElasticsearchRestTemplate elasticsearchRestTemplate;
-    @Autowired
-    private PostService postService;
+   
     
     @Override
     public void validPost(Post post,boolean add){
@@ -85,7 +82,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
     }
     
     
-    Override
+    @Override
     public QueryWrapper<Post> getQueryWrapper(PostQueryRequest postQueryRequest) {
         QueryWrapper<Post> queryWrapper = new QueryWrapper<>();
         if(postQueryRequest!=null){
@@ -105,8 +102,8 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         }
         queryWrapper.like(StringUtils.isNotBlank(title),"title",title);
         queryWrapper.like(StringUtils.isNotBlank(content),"content",content);
-        if(CollectionUtils.isNotEmpty(tagList)){
-            for(String tag: tagList){
+        if(CollectionUtils.isNotEmpty(tags)){
+            for(String tag: tags){
                 queryWrapper.like("tags","\""+tag+"\"");
             }
         }
@@ -160,7 +157,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
         
         if(StringUtils.isNotBlank(searchText)){
             boolQueryBuilder.should(QueryBuilders.matchQuery("title",searchText));
-            boolQueryBuilder.should(QueryBuilder.matchQuery("description",searchText));
+            boolQueryBuilder.should(QueryBuilders.matchQuery("description",searchText));
             boolQueryBuilder.should(QueryBuilders.matchQuery("content",searchText));
             boolQueryBuilder.minimumShouldMatch(1);
         }
@@ -215,7 +212,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
     public PostVO getPostVO(Post post, HttpServletRequest request) {
           PostVO postVO = PostVO.objToVo(post);
           long postId = post.getId();
-          long userId = postVO.getUserId();
+          Long userId = postVO.getUserId();
           User user= null;
           if(userId != null && userId>0){
               user = userService.getById(userId);
@@ -229,7 +226,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
               thumbQueryWrapper.in("postId",postId);
               thumbQueryWrapper.eq("userId",loginUser.getId());
               PostThumb postThumb = postThumbMapper.selectOne(thumbQueryWrapper);
-              postVO.setThumbNum(postThumb != null);
+              postVO.setHasThumb(postThumb != null);
               QueryWrapper<PostFavour> favourQueryWrapper = new QueryWrapper<>();
               favourQueryWrapper.in("postId",postId);
               favourQueryWrapper.eq("userId",loginUser.getId());
@@ -263,7 +260,7 @@ public class PostServiceImpl extends ServiceImpl<PostMapper, Post> implements Po
             thumbQueryWrapper.in("postId",postIdSet);
             thumbQueryWrapper.eq("userId",loginUser.getId());
             List<PostThumb> postPostThumbList = postThumbMapper.selectList(thumbQueryWrapper);
-            postPostThumbList.forEach(postThumb-> postIdHasThumbMap.put(postPostThumbList.getPostId(),true));
+            postPostThumbList.forEach(postThumb-> postIdHasThumbMap.put(postThumb.getPostId(),true));
             //获取收藏
             QueryWrapper<PostFavour> postFavourQueryWrapper = new QueryWrapper<>();
             postFavourQueryWrapper.in("postId",postIdSet);

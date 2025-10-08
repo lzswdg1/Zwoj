@@ -1,7 +1,6 @@
 package com.zw.zwoj.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.sql.SqlUtils;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.zwoj.common.ErrorCode;
 import com.zw.zwoj.constant.CommonConstant;
@@ -13,9 +12,12 @@ import com.zw.zwoj.model.enums.UserRoleEnum;
 import com.zw.zwoj.model.vo.LoginUserVO;
 import com.zw.zwoj.model.vo.UserVO;
 import com.zw.zwoj.service.UserService;
+import com.zw.zwoj.utils.SqlUtils;
+import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 
@@ -28,6 +30,8 @@ import java.util.stream.Collectors;
 import static com.zw.zwoj.constant.UserConstant.USER_LOGIN_STATE;
 import static net.sf.jsqlparser.util.validation.metadata.NamedObject.user;
 
+@Slf4j
+@Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     private static final String SALT = "zw";
     
@@ -160,7 +164,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public boolean isAdmin(HttpServletRequest request) {
         Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
         User currentUser = (User) userObj;
-        return isAdmin(user);
+        return isAdmin(currentUser);
     }
     
     @Override

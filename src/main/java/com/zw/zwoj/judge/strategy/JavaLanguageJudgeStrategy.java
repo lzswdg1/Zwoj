@@ -1,11 +1,11 @@
 package com.zw.zwoj.judge.strategy;
 
 import cn.hutool.json.JSONUtil;
-import com.yupi.yuoj.judge.codesandbox.model.JudgeInfo;
-import com.yupi.yuoj.model.dto.question.JudgeCase;
-import com.yupi.yuoj.model.dto.question.JudgeConfig;
-import com.yupi.yuoj.model.entity.Question;
-import com.yupi.yuoj.model.enums.JudgeInfoMessageEnum;
+import com.zw.zwoj.judge.codesandbox.model.JudgeInfo;
+import com.zw.zwoj.model.dto.question.JudgeCase;
+import com.zw.zwoj.model.dto.question.JudgeConfig;
+import com.zw.zwoj.model.bean.Question;
+import com.zw.zwoj.model.enums.JudgeInfoMessageEnum;
 
 import java.util.List;
 import java.util.Optional;

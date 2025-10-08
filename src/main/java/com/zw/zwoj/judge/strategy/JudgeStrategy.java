@@ -1,6 +1,6 @@
 package com.zw.zwoj.judge.strategy;
 
-import com.yupi.yuoj.judge.codesandbox.model.JudgeInfo;
+import com.zw.zwoj.judge.codesandbox.model.JudgeInfo;
 
 /**
  * 判题策略

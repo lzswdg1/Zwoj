@@ -21,9 +21,9 @@ public class CosManager {
 
     //上传对象
     public PutObjectResult putObject(String key,String localFilePath){
-        PutObjectResult putObjectResult = new PutObjectResult(cosClientConfig.getBucket(),key,
+        PutObjectRequest putObjectRequest = new PutObjectRequest(cosClientConfig.getBucket(),key,
                 new File(localFilePath));
-        return cosClient.putObject(putObjectResult);
+        return cosClient.putObject(putObjectRequest);
     }
 
 

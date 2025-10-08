@@ -1,8 +1,8 @@
 package com.zw.zwoj.wxmp;
 
-import com.yupi.yuoj.wxmp.handler.EventHandler;
-import com.yupi.yuoj.wxmp.handler.MessageHandler;
-import com.yupi.yuoj.wxmp.handler.SubscribeHandler;
+import com.zw.zwoj.wxmp.handler.EventHandler;
+import com.zw.zwoj.wxmp.handler.MessageHandler;
+import com.zw.zwoj.wxmp.handler.SubscribeHandler;
 import me.chanjar.weixin.common.api.WxConsts.EventType;
 import me.chanjar.weixin.common.api.WxConsts.XmlMsgType;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;

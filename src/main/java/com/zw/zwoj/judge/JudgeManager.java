@@ -1,11 +1,11 @@
 package com.zw.zwoj.judge;
 
-import com.yupi.yuoj.judge.codesandbox.model.JudgeInfo;
-import com.yupi.yuoj.judge.strategy.DefaultJudgeStrategy;
-import com.yupi.yuoj.judge.strategy.JavaLanguageJudgeStrategy;
-import com.yupi.yuoj.judge.strategy.JudgeContext;
-import com.yupi.yuoj.judge.strategy.JudgeStrategy;
-import com.yupi.yuoj.model.entity.QuestionSubmit;
+import com.zw.zwoj.judge.codesandbox.model.JudgeInfo;
+import com.zw.zwoj.judge.strategy.DefaultJudgeStrategy;
+import com.zw.zwoj.judge.strategy.JavaLanguageJudgeStrategy;
+import com.zw.zwoj.judge.strategy.JudgeContext;
+import com.zw.zwoj.judge.strategy.JudgeStrategy;
+import com.zw.zwoj.model.bean.QuestionSubmit;
 import org.springframework.stereotype.Service;
 
 /**

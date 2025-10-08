@@ -1,7 +1,7 @@
 package com.zw.zwoj.judge.codesandbox;
 
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeResponse;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeRequest;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeResponse;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

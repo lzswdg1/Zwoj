@@ -1,11 +1,11 @@
 package com.zw.zwoj.judge.codesandbox.impl;
 
-import com.yupi.yuoj.judge.codesandbox.CodeSandbox;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.yupi.yuoj.judge.codesandbox.model.JudgeInfo;
-import com.yupi.yuoj.model.enums.JudgeInfoMessageEnum;
-import com.yupi.yuoj.model.enums.QuestionSubmitStatusEnum;
+import com.zw.zwoj.judge.codesandbox.CodeSandbox;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeRequest;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeResponse;
+import com.zw.zwoj.judge.codesandbox.model.JudgeInfo;
+import com.zw.zwoj.model.enums.JudgeInfoMessageEnum;
+import com.zw.zwoj.model.enums.QuestionSubmitStatusEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;

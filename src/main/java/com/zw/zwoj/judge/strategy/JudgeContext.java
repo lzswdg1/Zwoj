@@ -1,9 +1,9 @@
 package com.zw.zwoj.judge.strategy;
 
-import com.yupi.yuoj.judge.codesandbox.model.JudgeInfo;
-import com.yupi.yuoj.model.dto.question.JudgeCase;
-import com.yupi.yuoj.model.entity.Question;
-import com.yupi.yuoj.model.entity.QuestionSubmit;
+import com.zw.zwoj.judge.codesandbox.model.JudgeInfo;
+import com.zw.zwoj.model.dto.question.JudgeCase;
+import com.zw.zwoj.model.bean.Question;
+import com.zw.zwoj.model.bean.QuestionSubmit;
 import lombok.Data;
 
 import java.util.List;

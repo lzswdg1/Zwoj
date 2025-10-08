@@ -2,11 +2,11 @@ package com.zw.zwoj.judge.codesandbox.impl;
 
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
-import com.yupi.yuoj.common.ErrorCode;
-import com.yupi.yuoj.exception.BusinessException;
-import com.yupi.yuoj.judge.codesandbox.CodeSandbox;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeResponse;
+import com.zw.zwoj.common.ErrorCode;
+import com.zw.zwoj.exception.BusinessException;
+import com.zw.zwoj.judge.codesandbox.CodeSandbox;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeRequest;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeResponse;
 import org.apache.commons.lang3.StringUtils;
 
 /**

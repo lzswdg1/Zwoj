@@ -1,16 +1,17 @@
 package com.zw.zwoj.aop;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.util.StopWatch;
+import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.util.StopWatch;
+import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
@@ -25,12 +26,12 @@ public class LogInterceptor {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         //获取请求路径
-        RequestAttribute requestAttribute = RequestContextHolder.currentRequestAttributes();
+        RequestAttributes requestAttribute = RequestContextHolder.currentRequestAttributes();
         HttpServletRequest httpServletRequest = ((ServletRequestAttributes)requestAttribute).getRequest();
 
         //生成请求唯一id
          String requestId = UUID.randomUUID().toString();
-         String url = httpServletRequest.getRequestURL();
+         String url = httpServletRequest.getRequestURI();
 
          //获取请求参数
         Object[] args = joinPoint.getArgs();

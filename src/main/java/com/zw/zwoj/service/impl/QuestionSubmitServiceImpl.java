@@ -2,7 +2,7 @@ package com.zw.zwoj.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.baomidou.mybatisplus.core.toolkit.sql.SqlUtils;
+import com.zw.zwoj.utils.SqlUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zw.zwoj.common.ErrorCode;
@@ -21,6 +21,7 @@ import com.zw.zwoj.model.vo.QuestionSubmitVO;
 import com.zw.zwoj.service.QuestionService;
 import com.zw.zwoj.service.QuestionSubmitService;
 import com.zw.zwoj.service.UserService;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -94,7 +95,7 @@ public class QuestionSubmitServiceImpl extends ServiceImpl<QuestionSubmitMapper,
         
         //拼接查询条件
         queryWrapper.eq(StringUtils.isNotBlank(language),"language",language);
-        queryWrapper.eq(StringUtils.isNotBlank(userId),"userId",userId);
+        queryWrapper.eq(ObjectUtils.isNotEmpty(userId),"userId",userId);
         queryWrapper.eq(QuestionSubmitStatusEnum.getEnumByValue(status)!=null,"status",status);
         queryWrapper.eq("isDelete",false);
         queryWrapper.orderBy(SqlUtils.validSortField(sortField),sortField.equals(CommonConstant.SORT_ORDER_ASC),

@@ -1,21 +1,21 @@
 package com.zw.zwoj.judge;
 
 import cn.hutool.json.JSONUtil;
-import com.yupi.yuoj.common.ErrorCode;
-import com.yupi.yuoj.exception.BusinessException;
-import com.yupi.yuoj.judge.codesandbox.CodeSandbox;
-import com.yupi.yuoj.judge.codesandbox.CodeSandboxFactory;
-import com.yupi.yuoj.judge.codesandbox.CodeSandboxProxy;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeRequest;
-import com.yupi.yuoj.judge.codesandbox.model.ExecuteCodeResponse;
-import com.yupi.yuoj.judge.codesandbox.model.JudgeInfo;
-import com.yupi.yuoj.judge.strategy.JudgeContext;
-import com.yupi.yuoj.model.dto.question.JudgeCase;
-import com.yupi.yuoj.model.entity.Question;
-import com.yupi.yuoj.model.entity.QuestionSubmit;
-import com.yupi.yuoj.model.enums.QuestionSubmitStatusEnum;
-import com.yupi.yuoj.service.QuestionService;
-import com.yupi.yuoj.service.QuestionSubmitService;
+import com.zw.zwoj.common.ErrorCode;
+import com.zw.zwoj.exception.BusinessException;
+import com.zw.zwoj.judge.codesandbox.CodeSandbox;
+import com.zw.zwoj.judge.codesandbox.CodeSandboxFactory;
+import com.zw.zwoj.judge.codesandbox.CodeSandboxProxy;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeRequest;
+import com.zw.zwoj.judge.codesandbox.model.ExecuteCodeResponse;
+import com.zw.zwoj.judge.codesandbox.model.JudgeInfo;
+import com.zw.zwoj.judge.strategy.JudgeContext;
+import com.zw.zwoj.model.dto.question.JudgeCase;
+import com.zw.zwoj.model.bean.Question;
+import com.zw.zwoj.model.bean.QuestionSubmit;
+import com.zw.zwoj.model.enums.QuestionSubmitStatusEnum;
+import com.zw.zwoj.service.QuestionService;
+import com.zw.zwoj.service.QuestionSubmitService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

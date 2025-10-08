@@ -43,7 +43,7 @@ public class FileController {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         validFile(multipartFile,fileUploadBizEnum);
-        User lohinUser = userService.getLoginUser(request);
+        User loginUser = userService.getLoginUser(request);
         //文件目录，根据业务，用户来划分
         String uuid = RandomStringUtils.randomAlphanumeric(8);
         String filename = uuid + "-" + multipartFile.getOriginalFilename();
